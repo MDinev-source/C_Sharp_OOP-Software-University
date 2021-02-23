@@ -1,0 +1,13 @@
+C:\Users\Milko Qni Emi PC\source\repos\Exams - C# OOP\Exam Retake - 22 Aug 2020\Exam-Skeleton\EasterRaces\bin\Debug\netcoreapp3.1\EasterRaces.exe
+C:\Users\Milko Qni Emi PC\source\repos\Exams - C# OOP\Exam Retake - 22 Aug 2020\Exam-Skeleton\EasterRaces\bin\Debug\netcoreapp3.1\EasterRaces.deps.json
+C:\Users\Milko Qni Emi PC\source\repos\Exams - C# OOP\Exam Retake - 22 Aug 2020\Exam-Skeleton\EasterRaces\bin\Debug\netcoreapp3.1\EasterRaces.runtimeconfig.json
+C:\Users\Milko Qni Emi PC\source\repos\Exams - C# OOP\Exam Retake - 22 Aug 2020\Exam-Skeleton\EasterRaces\bin\Debug\netcoreapp3.1\EasterRaces.runtimeconfig.dev.json
+C:\Users\Milko Qni Emi PC\source\repos\Exams - C# OOP\Exam Retake - 22 Aug 2020\Exam-Skeleton\EasterRaces\bin\Debug\netcoreapp3.1\EasterRaces.dll
+C:\Users\Milko Qni Emi PC\source\repos\Exams - C# OOP\Exam Retake - 22 Aug 2020\Exam-Skeleton\EasterRaces\bin\Debug\netcoreapp3.1\EasterRaces.pdb
+C:\Users\Milko Qni Emi PC\source\repos\Exams - C# OOP\Exam Retake - 22 Aug 2020\Exam-Skeleton\EasterRaces\obj\Debug\netcoreapp3.1\EasterRaces.csprojAssemblyReference.cache
+C:\Users\Milko Qni Emi PC\source\repos\Exams - C# OOP\Exam Retake - 22 Aug 2020\Exam-Skeleton\EasterRaces\obj\Debug\netcoreapp3.1\EasterRaces.csproj.CoreCompileInputs.cache
+C:\Users\Milko Qni Emi PC\source\repos\Exams - C# OOP\Exam Retake - 22 Aug 2020\Exam-Skeleton\EasterRaces\obj\Debug\netcoreapp3.1\EasterRaces.AssemblyInfoInputs.cache
+C:\Users\Milko Qni Emi PC\source\repos\Exams - C# OOP\Exam Retake - 22 Aug 2020\Exam-Skeleton\EasterRaces\obj\Debug\netcoreapp3.1\EasterRaces.AssemblyInfo.cs
+C:\Users\Milko Qni Emi PC\source\repos\Exams - C# OOP\Exam Retake - 22 Aug 2020\Exam-Skeleton\EasterRaces\obj\Debug\netcoreapp3.1\EasterRaces.dll
+C:\Users\Milko Qni Emi PC\source\repos\Exams - C# OOP\Exam Retake - 22 Aug 2020\Exam-Skeleton\EasterRaces\obj\Debug\netcoreapp3.1\EasterRaces.pdb
+C:\Users\Milko Qni Emi PC\source\repos\Exams - C# OOP\Exam Retake - 22 Aug 2020\Exam-Skeleton\EasterRaces\obj\Debug\netcoreapp3.1\EasterRaces.genruntimeconfig.cache
