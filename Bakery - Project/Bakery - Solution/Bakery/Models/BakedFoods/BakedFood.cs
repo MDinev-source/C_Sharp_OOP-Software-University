@@ -1,45 +1,78 @@
 ﻿namespace Bakery.Models.BakedFoods
 {
-    using Bakery.Utilities.Messages;
     using System;
-    using System.Collections.Generic;
     using System.Text;
-    public class BakedFood
+    using Bakery.Utilities.Messages;
+    using Bakery.Models.BakedFoods.Contracts;
+
+    public class BakedFood : IBakedFood
     {
         private string name;
         private int portion;
+        private decimal price;
+
+        public BakedFood(string name, int portion, decimal price)
+        {
+            this.Name = name;
+            this.Portion = portion;
+            this.Price = price;
+        }
 
         public string Name
         {
-            get 
-            { 
-                return name; 
+            get
+            {
+                return this.name;
             }
-            private set 
+            private set
             {
                 if (string.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentException(ExceptionMessages.InvalidName);
                 }
-                name = value; 
+                this.name = value;
             }
         }
 
         public int Portion
         {
-            get 
+            get
             {
-                return portion; 
+                return this.portion;
             }
-            set 
+            private set
             {
                 if (value <= 0)
                 {
                     throw new ArgumentException(ExceptionMessages.InvalidPortion);
                 }
-                portion = value; 
+                this.portion = value;
             }
         }
 
+        public decimal Price
+        {
+            get
+            {
+                return this.price;
+            }
+            private set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(ExceptionMessages.InvalidPrice);
+                }
+                this.price = value;
+            }
+        }
+
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+
+            sb.AppendLine($"{this.Name}: {this.Portion}g - {this.Price:f2}");
+
+            return base.ToString();
+        }
     }
 }
