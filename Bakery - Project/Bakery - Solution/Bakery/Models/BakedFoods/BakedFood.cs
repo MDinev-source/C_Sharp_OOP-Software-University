@@ -5,7 +5,7 @@
     using Bakery.Utilities.Messages;
     using Bakery.Models.BakedFoods.Contracts;
 
-    public class BakedFood : IBakedFood
+    public abstract class BakedFood : IBakedFood
     {
         private string name;
         private int portion;
