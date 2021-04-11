@@ -75,12 +75,14 @@
         {
             this.drinkOrders.Clear();
             this.foodOrders.Clear();
-            this.NumberOfPeople = 0;
+            this.NumberOfPeople = this.numberOfPeople;
         }
 
         public decimal GetBill()
         {
-            var result = this.DrinkOrders.Sum(x => x.Price) + this.FoodOrders.Sum(x => x.Price);
+            var result = this.DrinkOrders.Sum(x => x.Price) 
+                + this.FoodOrders.Sum(y => y.Price)
+                +this.NumberOfPeople*this.PricePerPerson;
 
             return result;
         }
@@ -109,10 +111,7 @@
 
         public void Reserve(int numberOfPeople)
         {
-            if (numberOfPeople <= this.Capacity)
-            {
-                this.NumberOfPeople = numberOfPeople;
-            }
+            this.NumberOfPeople = numberOfPeople;
         }
     }
 }
