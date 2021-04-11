@@ -2,10 +2,10 @@
 {
     public class Bread : BakedFood
     {
-        private const int initialbreadportion = 200;
+        private const int InitialBreadPortion = 200;
 
         public Bread(string name, decimal price) 
-            : base(name,initialbreadportion, price)
+            : base(name,InitialBreadPortion, price)
         {
         }
     }

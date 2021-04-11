@@ -68,11 +68,10 @@
 
         public override string ToString()
         {
-            var sb = new StringBuilder();
 
-            sb.AppendLine($"{this.Name}: {this.Portion}g - {this.Price:f2}");
+            var result = ($"{this.Name}: {this.Portion}g - {this.Price:f2}");
 
-            return base.ToString();
+            return result;
         }
     }
 }
