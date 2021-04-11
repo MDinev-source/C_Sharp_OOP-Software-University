@@ -1,6 +1,8 @@
 ﻿namespace Bakery.Models.Tables
 {
     using System;
+    using System.Linq;
+    using System.Text;
     using Bakery.Utilities.Messages;
     using System.Collections.Generic;
     using Bakery.Models.Drinks.Contracts;
@@ -71,32 +73,46 @@
 
         public void Clear()
         {
-            throw new NotImplementedException();
+            this.drinkOrders.Clear();
+            this.foodOrders.Clear();
+            this.NumberOfPeople = 0;
         }
 
         public decimal GetBill()
         {
-            throw new NotImplementedException();
+            var result = this.DrinkOrders.Sum(x => x.Price) + this.FoodOrders.Sum(x => x.Price);
+
+            return result;
         }
 
         public string GetFreeTableInfo()
         {
-            throw new NotImplementedException();
+            var sb = new StringBuilder();
+
+            sb.AppendLine($"Table: {this.TableNumber}");
+            sb.AppendLine($"Type: {this.GetType().Name}");
+            sb.AppendLine($"Capacity: {this.Capacity}");
+            sb.AppendLine($"Price per Person: {this.PricePerPerson}");
+
+            return sb.ToString().TrimEnd();
         }
 
         public void OrderDrink(IDrink drink)
         {
-            throw new NotImplementedException();
+            this.drinkOrders.Add(drink);
         }
 
         public void OrderFood(IBakedFood food)
         {
-            throw new NotImplementedException();
+            this.foodOrders.Add(food);
         }
 
         public void Reserve(int numberOfPeople)
         {
-            throw new NotImplementedException();
+            if (numberOfPeople <= this.Capacity)
+            {
+                this.NumberOfPeople = numberOfPeople;
+            }
         }
     }
 }
