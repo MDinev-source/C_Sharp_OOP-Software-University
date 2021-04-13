@@ -19,6 +19,7 @@
         private List<IBakedFood> bakedFoods;
         private List<IDrink> drinks;
         private List<ITable> tables;
+        private decimal totalIncome;
 
         public Controller()
         {
@@ -115,7 +116,7 @@
 
             foreach (var table in freeTables)
             {
-                sb.Append(table.GetFreeTableInfo());
+                sb.AppendLine(table.GetFreeTableInfo());
             }
 
             return sb.ToString().TrimEnd();
@@ -123,9 +124,8 @@
 
         public string GetTotalIncome()
         {
-            var result = this.tables.Sum(x => x.GetBill());
 
-            return string.Format(OutputMessages.TotalIncome, result);
+            return string.Format(OutputMessages.TotalIncome, totalIncome);
         }
 
         public string LeaveTable(int tableNumber)
@@ -133,6 +133,8 @@
             var table = this.tables.Find(x => x.TableNumber == tableNumber);
 
             var bill = table.GetBill();
+
+            totalIncome += bill;
 
             table.Clear();
 
@@ -157,14 +159,14 @@
             }
             else if (drink == null)
             {
-                return string.Format(OutputMessages.NonExistentDrink, drinkName,drinkBrand);
+                return string.Format(OutputMessages.NonExistentDrink, drinkName, drinkBrand);
             }
 
             else
             {
                 table.OrderDrink(drink);
 
-                return string.Format(OutputMessages.DrinkOrderSuccessful, tableNumber, drinkName,drinkBrand);
+                return string.Format(OutputMessages.DrinkOrderSuccessful, tableNumber, drinkName, drinkBrand);
             }
         }
 
@@ -195,7 +197,7 @@
         {
             var isNotReseverTable = this.tables.FirstOrDefault(x => x.IsReserved == false && x.Capacity >= numberOfPeople);
 
-            if (isNotReseverTable != null) 
+            if (isNotReseverTable != null)
             {
                 isNotReseverTable.Reserve(numberOfPeople);
 
@@ -207,5 +209,6 @@
                 return string.Format(OutputMessages.ReservationNotPossible, numberOfPeople);
             }
         }
+
     }
 }

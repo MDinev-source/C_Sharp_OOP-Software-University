@@ -21,6 +21,7 @@
             this.TableNumber = tableNumber;
             this.Capacity = capacity;
             this.PricePerPerson = pricePerPerson;
+            this.IsReserved = false;
 
             this.foodOrders = new List<IBakedFood>();
             this.drinkOrders = new List<IDrink>();
@@ -60,8 +61,9 @@
             }
         }
         public decimal PricePerPerson { get; }
-        public bool IsReserved
-            => this.NumberOfPeople > 0;
+
+        public bool IsReserved { get; private set; }
+
         public decimal Price
             => this.NumberOfPeople * this.PricePerPerson;
 
@@ -75,14 +77,13 @@
         {
             this.drinkOrders.Clear();
             this.foodOrders.Clear();
-            this.NumberOfPeople = this.numberOfPeople;
         }
 
         public decimal GetBill()
         {
-            var result = this.DrinkOrders.Sum(x => x.Price) 
+            var result = this.DrinkOrders.Sum(x => x.Price)
                 + this.FoodOrders.Sum(y => y.Price)
-                +this.NumberOfPeople*this.PricePerPerson;
+                + this.NumberOfPeople * this.PricePerPerson;
 
             return result;
         }
@@ -112,6 +113,7 @@
         public void Reserve(int numberOfPeople)
         {
             this.NumberOfPeople = numberOfPeople;
+            this.IsReserved = true;
         }
     }
 }
