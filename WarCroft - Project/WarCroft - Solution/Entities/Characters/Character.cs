@@ -35,7 +35,7 @@
             }
         }
 
-        public virtual double BaseHealth { get;  protected set; }
+        public double BaseHealth { get;  }
 
         public double Health
         {
@@ -57,7 +57,7 @@
             }
         }
 
-        public virtual double BaseArmor { get; protected set; }
+        public double BaseArmor { get;  }
         public double Armor
         {
             get
