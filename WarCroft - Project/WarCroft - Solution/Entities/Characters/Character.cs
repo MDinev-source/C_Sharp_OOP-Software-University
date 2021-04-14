@@ -10,13 +10,17 @@
         private string name;
         private double armor;
 
-        protected Character(string name, double health, double armor, double abilityPoints, Bag bag)
+        protected Character(string name, double baseHealth, double baseArmor, double abilityPoins, Bag bag)
+
         {
-            Name = name;
-            Health = health;
-            Armor = armor;
-            AbilityPoints = abilityPoints;
-            Bag = bag;
+
+            this.Name = name;
+            this.BaseHealth = baseHealth;
+            this.BaseArmor = baseArmor;
+            this.AbilityPoints = abilityPoins;
+            this.Health = BaseHealth;
+            this.Armor = BaseArmor;
+            this.Bag = bag;
         }
 
         public string Name
@@ -35,7 +39,7 @@
             }
         }
 
-        public double BaseHealth { get;  }
+        public double BaseHealth { get; }
 
         public double Health
         {
@@ -57,7 +61,7 @@
             }
         }
 
-        public double BaseArmor { get;  }
+        public double BaseArmor { get; }
         public double Armor
         {
             get
@@ -87,14 +91,14 @@
             }
         }
 
-        void TakeDamage(double hitPoints)
+        public void TakeDamage(double hitPoints)
         {
 
         }
 
-        void UseItem(Item item)
+        public void UseItem(Item item)
         {
-            
+           
         }
     }
 }
