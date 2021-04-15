@@ -114,7 +114,7 @@
         public string GetStats()
         {
             var sb = new StringBuilder();
-            foreach (var character in party.OrderByDescending(x=>x.IsAlive).ThenByDescending(x=>x.Health))
+            foreach (var character in party.OrderByDescending(x => x.IsAlive).ThenByDescending(x => x.Health))
             {
                 sb.AppendLine(string.Format(SuccessMessages.CharacterStats
                     , character.Name
@@ -132,12 +132,91 @@
 
         public string Attack(string[] args)
         {
-            throw new NotImplementedException();
+            var attackerName = args[0];
+            var receiverName = args[1];
+
+            var currentAttacker = this.party.FirstOrDefault(x => x.Name == attackerName);
+            var receiver = this.party.FirstOrDefault(x => x.Name == receiverName);
+
+            Warrior attacker = (Warrior)currentAttacker;
+
+            if (attacker == null || receiver == null)
+            {
+                if (attacker == null)
+                {
+                    throw new ArgumentException(string.Format(ExceptionMessages.CharacterNotInParty, attackerName));
+                }
+                else
+                {
+                    throw new ArgumentException(string.Format(ExceptionMessages.CharacterNotInParty, receiverName));
+                }
+            }
+
+            if (attacker.AbilityPoints == 0)
+            {
+                throw new ArgumentException(string.Format(ExceptionMessages.AttackFail, attackerName));
+            }
+
+            attacker.Attack(receiver);
+
+            var sb = new StringBuilder();
+
+            sb.AppendLine(string.Format(SuccessMessages.AttackCharacter
+                , attackerName
+                , receiverName
+                , attacker.AbilityPoints
+                , receiverName
+                , receiver.Health
+                , receiver.BaseHealth
+                , receiver.Armor
+                , receiver.BaseArmor));
+
+            if (!receiver.IsAlive)
+            {
+                sb.AppendLine(string.Format(SuccessMessages.AttackKillsCharacter, receiverName));
+            }
+
+            return sb.ToString().TrimEnd();
         }
 
         public string Heal(string[] args)
         {
-            throw new NotImplementedException();
+            var healerName = args[0];
+            var receiverName = args[1];
+
+            var currenthealer = this.party.FirstOrDefault(x => x.Name == healerName);
+            var receiver = this.party.FirstOrDefault(x => x.Name == receiverName);
+
+            Priest healer = (Priest)currenthealer;
+
+            if (healer == null || receiver == null)
+            {
+                if (healer == null)
+                {
+                    throw new ArgumentException(string.Format(ExceptionMessages.CharacterNotInParty, healerName));
+                }
+                else
+                {
+                    throw new ArgumentException(string.Format(ExceptionMessages.CharacterNotInParty, receiverName));
+                }
+            }
+
+            if (healer.AbilityPoints == 0)
+            {
+                throw new ArgumentException(string.Format(ExceptionMessages.HealerCannotHeal, healerName));
+            }
+            var sb = new StringBuilder();
+
+            healer.Heal(receiver);
+
+            sb.AppendLine(string.Format(SuccessMessages.HealCharacter
+                , healerName
+                , receiverName
+                , healer.AbilityPoints
+                , receiverName
+                , receiver.Health));
+
+            return sb.ToString().TrimEnd();
         }
     }
 }

@@ -12,7 +12,7 @@
         }
         public void Heal(Character character)
         {
-            throw new System.NotImplementedException();
+            this.AbilityPoints += character.AbilityPoints;
         }
     }
 }

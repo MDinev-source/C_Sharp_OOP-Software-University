@@ -93,12 +93,37 @@
 
         public void TakeDamage(double hitPoints)
         {
+            this.EnsureAlive();
 
+            if (this.Armor >= hitPoints)
+            {
+                this.Armor = this.Armor - hitPoints;
+                hitPoints = 0;
+            }
+            else
+            {
+                hitPoints = hitPoints - this.Armor;
+                this.Armor = 0;
+            }
+
+            if (hitPoints > 0 && hitPoints < this.Health)
+            {
+                this.Health = this.Health - hitPoints;
+            }
+
+            else
+            {
+                hitPoints = hitPoints - this.Health;
+                this.Health = 0;
+                IsAlive = false;
+            }
         }
 
         public void UseItem(Item item)
         {
-           
+            this.EnsureAlive();
+
+            item.AffectCharacter(this);
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿namespace WarCroft.Entities.Characters
 {
+    using System;
+    using WarCroft.Constants;
     using WarCroft.Entities.Characters.Contracts;
     using WarCroft.Entities.Inventory;
     public class Warrior:Character,IAttacker
@@ -11,7 +13,12 @@
 
         public void Attack(Character character)
         {
-            throw new System.NotImplementedException();
+            if (this.Equals(character))
+            {
+                throw new InvalidOperationException(ExceptionMessages.CharacterAttacksSelf);
+            }
+
+            character.TakeDamage(this.AbilityPoints);
         }
     }
 }
